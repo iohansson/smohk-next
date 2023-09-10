@@ -2,11 +2,10 @@
 
 import { useRef, type FunctionComponent, useEffect } from 'react';
 import { Chart } from './Chart';
-import { SmokingDocument } from '../smoke/Smoking.model';
+import { Smoking } from '../smoke/Smoking.model';
+import { humanDate } from '@/helpers/date';
 
-export const Stats: FunctionComponent<{ stats: SmokingDocument[] }> = ({
-  stats,
-}) => {
+export const Stats: FunctionComponent<{ stats: Smoking[] }> = ({ stats }) => {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -16,7 +15,7 @@ export const Stats: FunctionComponent<{ stats: SmokingDocument[] }> = ({
     const chart = new Chart(ref.current, {
       type: 'bar',
       data: {
-        labels: stats.map((s) => s.dateStamp),
+        labels: stats.map((s) => humanDate(s.dateStamp)),
         datasets: [
           {
             label: 'Smoked',

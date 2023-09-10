@@ -3,6 +3,7 @@ import '../styles/index.css';
 import { Inter } from 'next/font/google';
 import { Navbar } from '@/modules/layout/Navbar';
 import { ClerkProvider } from '@clerk/nextjs';
+import clsx from 'clsx';
 
 export const metadata = {
   title: 'Smohk. Smoke without judgement.',
@@ -28,8 +29,8 @@ export default async function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
+      <html lang="en" className="h-full">
+        <body className={clsx(inter.className, 'min-h-full flex flex-col')}>
           <Navbar />
           {children}
         </body>

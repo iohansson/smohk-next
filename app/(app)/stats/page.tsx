@@ -20,8 +20,8 @@ export default async function StatsPage() {
     }).then((s) => s.map((s) => s.toObject())),
   ]);
   return (
-    <main className="flex justify-center items-center">
-      <div className="artboard phone-3 py-16">
+    <main className="flex flex-grow justify-center items-center px-6">
+      <div className="flex-grow">
         <h1 className="font-black">Stats</h1>
         <Stats stats={stats} />
       </div>

@@ -17,7 +17,14 @@ type Props = {
 
 const Progress = dynamic(
   () => import('@/modules/smoke/Progress').then((mod) => mod.Progress),
-  { ssr: false },
+  {
+    ssr: false,
+    loading: () => (
+      <div className="mx-auto w-80 h-80 flex items-center justify-center">
+        <div className="loading loading-ring loading-xs" />
+      </div>
+    ),
+  },
 );
 
 export function SmokingBoard(props: Props) {
@@ -30,15 +37,15 @@ export function SmokingBoard(props: Props) {
   return isLoading ? (
     'loading...'
   ) : (
-    <>
+    <div className="flex flex-grow items-center justify-between">
       <SmokingStats config={config} smoking={smoking} />
       <Progress
         size={32}
         progress={progress}
         text={text}
-        className="mx-auto mt-4 w-80"
+        className="mx-auto w-80"
         onClick={smoke}
       />
-    </>
+    </div>
   );
 }

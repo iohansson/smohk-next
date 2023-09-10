@@ -10,7 +10,9 @@ export const findStats = async ({
   dateStamp: number;
 }) => {
   const start = dayjs.unix(dateStamp).subtract(30, 'days').unix();
-  return SmokingModel.find({ smoker, dateStamp: { $gte: start } }).select(
+  return SmokingModel.find(
+    { smoker, dateStamp: { $gte: start } },
     '-_id -__v',
+    { sort: { dateStamp: 1 } },
   );
 };

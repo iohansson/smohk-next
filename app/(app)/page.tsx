@@ -24,11 +24,8 @@ export default async function App() {
     }).then((s) => s.toObject()),
   ]);
   return (
-    <main className="flex justify-center items-center">
-      <div className="artboard phone-3 py-16">
-        <h1 className="font-black">Smohk</h1>
-        <SmokingBoard smoker={smoker} config={config} smoking={smoking} />
-      </div>
+    <main className="flex flex-grow justify-center items-center px-6">
+      <SmokingBoard smoker={smoker} config={config} smoking={smoking} />
     </main>
   );
 }

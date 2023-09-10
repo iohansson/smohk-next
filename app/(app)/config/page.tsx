@@ -18,8 +18,8 @@ export default async function ConfigPage() {
     }).then((c) => c.toObject()),
   ]);
   return (
-    <main className="flex justify-center items-center">
-      <div className="artboard phone-3 py-16">
+    <main className="flex flex-grow justify-center items-center px-6">
+      <div className="flex-grow">
         <h1 className="font-black">Config</h1>
         <ConfigForm config={config} smoker={smoker.email} />
       </div>

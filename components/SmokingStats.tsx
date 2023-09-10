@@ -3,7 +3,7 @@
 import { useMoney } from '@/modules/smoke/useMoney';
 import { type Config } from '@/modules/config/Config.model';
 import { type Smoking } from '@/modules/smoke/Smoking.model';
-import { humanDate, humanDatetime } from '@/helpers/date';
+import { humanDatetime } from '@/helpers/date';
 
 type SmokingStatsProps = {
   config: Config;
@@ -21,15 +21,24 @@ export function SmokingStats(props: SmokingStatsProps) {
   });
 
   return (
-    <div className="py-4 space-y-2">
-      <p>smohked: {smoking.count}</p>
-      <p>day: {humanDate(smoking.dateStamp)}</p>
+    <div className="stats">
+      <div className="stat">
+        <div className="stat-title">Smoked</div>
+        <div className="stat-value">{smoking.count}</div>
+      </div>
+      <div className="stat">
+        <div className="stat-title">Spent</div>
+        <div className="stat-value">{today}</div>
+        <div className="stat-desc">Projected: {monthly}</div>
+      </div>
       {smoking.lastSmkdStamp && (
-        <p>last: {humanDatetime(smoking.lastSmkdStamp)}</p>
+        <div className="stat">
+          <div className="stat-title">Last</div>
+          <div className="stat-value">
+            {humanDatetime(smoking.lastSmkdStamp)}
+          </div>
+        </div>
       )}
-      <p>
-        spent today: {today}, projection: {monthly}
-      </p>
     </div>
   );
 }
